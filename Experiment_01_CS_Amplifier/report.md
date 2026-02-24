@@ -1,4 +1,6 @@
-# Experiment 01 – Design of Common Source (CS) Amplifier using NMOS (180 nm)
+# Experiment 01 
+
+# Design of Common Source (CS) Amplifier using NMOS (180 nm)
 
 ## 1. Objective
 
