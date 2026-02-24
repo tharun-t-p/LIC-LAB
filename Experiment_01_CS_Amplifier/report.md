@@ -1,43 +1,294 @@
-Experiment No 01
+# Experiment 01 – Design of Common Source (CS) Amplifier using NMOS (180 nm)
 
-Aim:
-To design and simulate a Common Source (CS) amplifier using an NMOS transistor with 180 nm technology in LTspice.
+## 1. Objective
 
-Given Specifications
+To design and analyze a Common Source (CS) amplifier using an NMOS transistor in 180 nm technology in LTspice with the following specifications:
 
-1.Supply Voltage (VDD) = 1.5 V
-2.Maximum Power Consumption ≤ 0.5 mW
-3.Load Capacitance (CL) = 1 pF
-4.Channel Length (L) = 180 nm
-5.Technology Node = 180 nm CMOS
-6.Type of Amplifier = Common Source (CS)
+- VDD = 1.5 V  
+- Power ≤ 0.5 mW  
+- CL = 1 pF  
+- Channel Length (L) = 180 nm  
 
-Theory
-A Common Source (CS) amplifier is one of the simplest and most widely used MOSFET amplifier configurations. In this circuit, the source terminal is connected to ground, the input signal is given to the gate, and the output is taken from the drain. It is called a common source amplifier because the source terminal is common to both the input and the output sides of the circuit. When the NMOS transistor is properly biased in the saturation region, even a small change in the gate-to-source voltage causes a change in the drain current. This change in drain current creates a corresponding voltage variation across the drain resistor, which results in an amplified output signal. One important characteristic of the CS amplifier is that the output signal is inverted compared to the input, producing a 180° phase shift.
+---
 
-The voltage gain of the CS amplifier mainly depends on the transconductance of the transistor and the value of the drain resistance. For correct operation and proper amplification, the transistor must operate in the saturation region and satisfy the condition 
-𝑉
-𝐷
-𝑆
-≥
-𝑉
-𝐺
-𝑆
-−
-𝑉
-𝑇
-𝐻
-V
-DS
-	​
+## 2. Circuit Description
 
-≥V
-GS
-	​
+The Common Source amplifier consists of:
 
-−V
-TH
-	​
+- NMOS transistor  
+- Drain resistor (RD)  
+- DC supply (VDD)  
+- Input applied at gate  
+- Output taken from drain  
+- Source grounded  
 
-. In this design, the amplifier works with a low supply voltage of 1.5 V, and the power dissipation is limited to 0.5 mW to ensure low-power operation. The presence of a 1 pF load capacitance influences the frequency response by limiting the bandwidth of the amplifier. Overall, the Common Source amplifier successfully provides voltage amplification with phase inversion while meeting the given power and technology requirements.
+The source terminal is common to both input and output, hence the name Common Source amplifier.
+<img width="1139" height="812" alt="Screenshot 2026-02-24 115942" src="https://github.com/user-attachments/assets/9426d024-2ac5-4332-814b-28236b6fd3fd" />
 
+
+---
+
+## 3. Theory
+
+The Common Source (CS) amplifier operates by biasing the MOSFET in the saturation region so that it can provide voltage amplification. For proper operation, the MOSFET must satisfy the saturation condition:
+
+$$
+V_{DS} \ge V_{GS} - V_{TH}
+$$
+
+This ensures that the transistor remains in the active region where the drain current is controlled mainly by the gate-to-source voltage rather than the drain voltage.
+
+In the saturation region, the drain current is given by:
+
+$$
+I_D = \frac{1}{2} \mu_n C_{ox} \left(\frac{W}{L}\right) (V_{GS} - V_{TH})^2
+$$
+
+This equation shows that the drain current depends on carrier mobility ($\mu_n$), oxide capacitance ($C_{ox}$), device dimensions ($W/L$), and the overdrive voltage $(V_{GS} - V_{TH})$. By properly choosing the device dimensions and bias voltage, the desired operating current can be achieved.
+
+The small-signal parameter that determines amplification is the transconductance:
+
+$$
+g_m = \frac{2I_D}{V_{GS} - V_{TH}}
+$$
+
+Transconductance represents how effectively a small change in gate voltage controls the drain current. A higher $g_m$ results in higher voltage gain.
+
+The voltage gain of the Common Source amplifier is given by:
+
+$$
+A_v = - g_m R_D
+$$
+
+The negative sign indicates a 180° phase shift between the input and output signals, meaning the output is inverted. The magnitude of gain depends on the product of transconductance and drain resistance.
+
+---
+
+## 4. DC Design Calculations
+
+### 4.1 Bias Point Selection
+
+For maximum symmetrical output swing:
+
+VDS = VDD / 2  
+VDS = 1.5 / 2 = 0.75 V
+
+---
+
+### 4.2 Power Constraint
+
+P = VDS × ID  
+
+0.5 × 10⁻³ = 0.75 × ID  
+
+ID = (0.5 × 10⁻³) / 0.75  
+
+ID = 0.67 mA  
+
+To maintain safe margin:
+
+ID = 200 µA
+
+---
+
+### 4.3 Drain Resistance Calculation
+
+VDD = ID RD + VDS  
+
+RD = (VDD − VDS) / ID  
+
+RD = (1.5 − 0.75) / (200 × 10⁻⁶)  
+
+RD = 3.75 kΩ
+
+---
+
+## 5. Device Sizing
+
+Given:
+
+VTH = 0.36 V  
+VGS = 0.9 V  
+
+Using saturation equation:
+
+ID = (1/2) Kn (W/L) (VGS − VTH)²  
+
+Kn = μn Cox  
+
+Kn = 2.303 × 10⁻⁴  
+
+Solving for W:
+
+W = [2 ID L] / [Kn (VGS − VTH)²]
+
+W = 1.072 µm  
+
+After simulation tuning:
+
+W = 1.58 µm 
+### A. DC Operating Point
+
+The DC operating point (Q-point) is the steady-state bias condition of the MOSFET when no input signal is applied. It sets the values of $I_D$ and $V_{DS}$ around which the AC signal varies. For proper amplification, the transistor must operate in the saturation region to ensure linear operation and maximum symmetrical output swing.
+<img width="848" height="629" alt="Screenshot 2026-02-24 120006" src="https://github.com/user-attachments/assets/f6bc0079-a17e-480f-884f-a3d0061ed6b2" />
+
+
+### B. Transient Analysis
+
+Transient analysis is used to observe the time-domain response of the Common Source amplifier. It shows how the output voltage varies with respect to the applied input signal. From the transient waveform, parameters such as peak-to-peak voltage, gain, and phase inversion can be measured. The output waveform is amplified and inverted, confirming proper amplifier operation.
+
+vin
+<img width="1919" height="1001" alt="Screenshot 2026-02-24 120229" src="https://github.com/user-attachments/assets/ecd51838-8181-49e1-afc5-6f69f19a3f8e" />
+
+vout
+<img width="1917" height="1003" alt="Screenshot 2026-02-24 120501" src="https://github.com/user-attachments/assets/5da2c1bb-8f97-49c2-a85b-aa90835bee56" />
+
+<img width="1918" height="996" alt="Screenshot 2026-02-24 120658" src="https://github.com/user-attachments/assets/31fc6cce-8ea0-409a-b53e-e4e4c869882d" />
+
+### C. AC Analysis
+
+AC analysis is performed to determine the frequency response of the Common Source amplifier. It shows how the gain varies with frequency and helps in identifying the lower and upper cutoff frequencies. From the AC plot, bandwidth and gain-bandwidth product can be calculated. This analysis verifies the amplifier’s performance over a range of operating frequencies.
+
+<img width="1919" height="995" alt="Screenshot 2026-02-24 120927" src="https://github.com/user-attachments/assets/123174af-6feb-474e-ba01-2f644228950e" />
+
+
+
+
+---
+
+## 6. Small Signal Analysis
+
+### 6.1 Transconductance
+
+gm = 2ID / (VGS − VTH)
+
+gm = [2 × 200 × 10⁻⁶] / (0.9 − 0.36)
+
+gm = 7.407 × 10⁻⁴ S
+
+---
+
+### 6.2 Theoretical Gain
+
+Av = gm RD  
+
+Av = (7.407 × 10⁻⁴) × (3.75 × 10³)
+
+Av = 2.77 V/V
+
+Gain in dB:
+
+Av(dB) = 20 log(2.77)
+
+Av = 8.84 dB
+
+---
+
+## 7. Simulation Results
+
+### 7.1 Input Voltage (Peak-to-Peak)
+
+Vin(p-p) = (909.55 − 890.38) mV  
+
+Vin(p-p) = 19.17 mV  
+
+### 7.2 Output Voltage (Peak-to-Peak)
+
+Vout(p-p) = (769.45 − 725.53) mV  
+
+Vout(p-p) = 43.92 mV  
+
+---
+
+### 7.3 Simulated Gain
+
+Av = Vout / Vin  
+
+Av = 43.92 / 19.17  
+
+Av = 2.29 V/V  
+
+Gain in dB:
+
+Av = 20 log(2.29)
+
+Av = 7.19 dB  
+
+---
+
+## 8. Frequency Response
+
+Without Load Capacitor:
+
+Lower cutoff frequency ≈ 0 Hz  
+Upper cutoff frequency ≈ 100 GHz  
+
+Bandwidth:
+
+BW = fH − fL  
+
+BW = 100 GHz  
+
+With CL = 1 pF:
+
+fH = 51.338 MHz  
+
+Gain Bandwidth Product:
+
+GBP = Av × BW  
+
+---
+
+## 9. Comparison Table
+
+| Parameter | Theoretical | Simulated |
+|------------|-------------|------------|
+| Gain (V/V) | 2.77 | 2.29 |
+| Gain (dB) | 8.84 dB | 7.19 dB |
+| ID | 200 µA | 198.6 µA |
+| W | 1.07 µm | 1.58 µm |
+
+---
+
+## 10. Conclusion
+
+- The Common Source amplifier was successfully designed under the given power constraint.
+- The amplifier provides approximately 2.3 V/V gain.
+- Theoretical and simulated results are reasonably close.
+- Gain deviation is due to channel length modulation and parasitic capacitances.
+- Load capacitance significantly reduces bandwidth.
+- The amplifier produces 180° phase inversion.
+
+---
+
+11. ## Summary/Inference
+
+
+The Common Source (CS) amplifier was designed with proper DC biasing to operate in the saturation region, satisfying:
+
+$$
+V_{DS} \ge V_{GS} - V_{TH}
+$$
+
+The drain current was determined using:
+
+$$
+I_D = \frac{1}{2} \mu_n C_{ox} \left(\frac{W}{L}\right) (V_{GS} - V_{TH})^2
+$$
+
+The small-signal voltage gain was calculated as:
+
+$$
+A_v = - g_m R_D
+$$
+
+Transient and AC analyses verified the amplification, phase inversion, and bandwidth characteristics of the amplifier.
+
+
+The simulated voltage gain closely matches the theoretical gain obtained using:
+
+$$
+g_m = \frac{2I_D}{V_{GS} - V_{TH}}
+$$
+
+Minor deviations occur due to non-ideal effects such as channel length modulation and parasitic capacitances. The experiment confirms that proper DC biasing ensures linear amplification and that gain is directly proportional to transconductance and drain resistance.
