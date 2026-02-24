@@ -297,8 +297,27 @@ GBP = Av × BW
 | W | 1.07 µm | 1.58 µm |
 
 ---
+## 11. Result
 
-## 11. Conclusion
+The Common Source (CS) amplifier using 180 nm NMOS technology was 
+successfully designed and simulated in LTspice.
+
+1. The circuit operated properly with a supply voltage of 1.5 V.
+2. The NMOS transistor was biased in the saturation region 
+   (VDS ≥ VGS − VTH).
+3. The drain current was maintained below 333 µA, ensuring that 
+   the total power dissipation was less than or equal to 0.5 mW.
+4. The amplifier produced voltage amplification with a clear 
+   180° phase shift between input and output.
+5. The presence of 1 pF load capacitance affected the bandwidth 
+   as expected.
+6. DC, AC, and transient analyses confirmed proper operation 
+   under the given specifications.
+
+Hence, the design requirements were satisfied and the CS amplifier 
+performed as expected within the given constraints.
+
+## 12. Conclusion
 
 - The Common Source amplifier was successfully designed under the given power constraint.
 - The amplifier provides approximately 2.3 V/V gain.
@@ -308,7 +327,7 @@ GBP = Av × BW
 - The amplifier produces 180° phase inversion.
 
 ---
-## 12. Summary/Inference
+## 13. Summary/Inference
 
 
 The Common Source (CS) amplifier was designed with proper DC biasing to operate in the saturation region, satisfying:
