@@ -11,6 +11,7 @@ To design and analyze a Common Source (CS) amplifier using an NMOS transistor in
 
 ---
 
+
 ## 2. Circuit Description
 
 The Common Source amplifier consists of:
@@ -127,6 +128,49 @@ W = 1.072 µm
 After simulation tuning:
 
 W = 1.58 µm 
+
+## 6. Procedure
+
+1. Open LTspice and create a new schematic file.
+
+2. Place the required components: NMOS transistor (set L = 180nm), 
+   drain resistor (RD), input voltage source (Vin), DC supply (VDD = 1.5V), 
+   and load capacitor (CL = 1pF).
+
+3. Connect the circuit in Common Source configuration:
+   - Source → Ground
+   - Gate → Input source
+   - Drain → RD → VDD
+   - CL connected from Drain to Ground
+
+4. Set the NMOS parameters:
+   - Channel Length (L) = 180nm
+   - Choose suitable Width (W) as per design
+   - Ensure the transistor model corresponds to 180nm technology.
+
+5. Apply DC biasing:
+   - Set VDD = 1.5V
+   - Adjust gate DC voltage so that the transistor operates in saturation
+     (VDS ≥ VGS − VTH).
+
+6. Check power constraint:
+   - Run .op (Operating Point) analysis
+   - Verify that ID ≤ 333µA
+   - Confirm power (P = VDD × ID) ≤ 0.5mW.
+
+7. Perform AC analysis:
+   - Add AC amplitude to input source
+   - Run .ac analysis
+   - Observe voltage gain and confirm 180° phase shift.
+
+8. Perform Transient analysis:
+   - Apply small sinusoidal input signal
+   - Run .tran simulation
+   - Verify amplified and inverted output waveform.
+
+9. Observe frequency response:
+   - Confirm bandwidth considering CL = 1pF
+   - Ensure amplifier meets design specifications.
 ### A. DC Operating Point
 
 The DC operating point (Q-point) is the steady-state bias condition of the MOSFET when no input signal is applied. It sets the values of $I_D$ and $V_{DS}$ around which the AC signal varies. For proper amplification, the transistor must operate in the saturation region to ensure linear operation and maximum symmetrical output swing.
@@ -158,9 +202,9 @@ AC analysis is performed to determine the frequency response of the Common Sourc
 
 ---
 
-## 6. Small Signal Analysis
+## 7. Small Signal Analysis
 
-### 6.1 Transconductance
+### 7.1 Transconductance
 
 gm = 2ID / (VGS − VTH)
 
@@ -170,7 +214,7 @@ gm = 7.407 × 10⁻⁴ S
 
 ---
 
-### 6.2 Theoretical Gain
+### 7.2 Theoretical Gain
 
 Av = gm RD  
 
@@ -186,15 +230,15 @@ Av = 8.84 dB
 
 ---
 
-## 7. Simulation Results
+## 8. Simulation Results
 
-### 7.1 Input Voltage (Peak-to-Peak)
+### 8.1 Input Voltage (Peak-to-Peak)
 
 Vin(p-p) = (909.55 − 890.38) mV  
 
 Vin(p-p) = 19.17 mV  
 
-### 7.2 Output Voltage (Peak-to-Peak)
+### 8.2 Output Voltage (Peak-to-Peak)
 
 Vout(p-p) = (769.45 − 725.53) mV  
 
@@ -202,7 +246,7 @@ Vout(p-p) = 43.92 mV
 
 ---
 
-### 7.3 Simulated Gain
+### 8.3 Simulated Gain
 
 Av = Vout / Vin  
 
@@ -218,7 +262,7 @@ Av = 7.2 dB
 
 ---
 
-## 8. Frequency Response
+## 9. Frequency Response
 
 Without Load Capacitor:
 
@@ -241,7 +285,7 @@ GBP = Av × BW
 
 ---
 
-## 9. Comparison Table
+## 10. Comparison Table
 
 | Parameter | Theoretical | Simulated |
 |------------|-------------|------------|
@@ -252,7 +296,7 @@ GBP = Av × BW
 
 ---
 
-## 10. Conclusion
+## 11. Conclusion
 
 - The Common Source amplifier was successfully designed under the given power constraint.
 - The amplifier provides approximately 2.3 V/V gain.
@@ -262,8 +306,7 @@ GBP = Av × BW
 - The amplifier produces 180° phase inversion.
 
 ---
-
-11. ## Summary/Inference
+## 12. Summary/Inference
 
 
 The Common Source (CS) amplifier was designed with proper DC biasing to operate in the saturation region, satisfying:
