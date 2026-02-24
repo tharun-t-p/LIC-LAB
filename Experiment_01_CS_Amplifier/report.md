@@ -138,10 +138,12 @@ The DC operating point (Q-point) is the steady-state bias condition of the MOSFE
 Transient analysis is used to observe the time-domain response of the Common Source amplifier. It shows how the output voltage varies with respect to the applied input signal. From the transient waveform, parameters such as peak-to-peak voltage, gain, and phase inversion can be measured. The output waveform is amplified and inverted, confirming proper amplifier operation.
 
 vin
-<img width="1919" height="1001" alt="Screenshot 2026-02-24 120229" src="https://github.com/user-attachments/assets/ecd51838-8181-49e1-afc5-6f69f19a3f8e" />
+<img width="1917" height="1003" alt="Screenshot 2026-02-24 120501" src="https://github.com/user-attachments/assets/4e5f7329-9665-4a9f-b282-47fe7c129881" />
+
 
 vout
-<img width="1917" height="1003" alt="Screenshot 2026-02-24 120501" src="https://github.com/user-attachments/assets/5da2c1bb-8f97-49c2-a85b-aa90835bee56" />
+<img width="1919" height="1001" alt="Screenshot 2026-02-24 120229" src="https://github.com/user-attachments/assets/483ab88c-2cc8-46ed-8218-726b2fd850b4" />
+
 
 <img width="1918" height="996" alt="Screenshot 2026-02-24 120658" src="https://github.com/user-attachments/assets/31fc6cce-8ea0-409a-b53e-e4e4c869882d" />
 
@@ -212,7 +214,7 @@ Gain in dB:
 
 Av = 20 log(2.29)
 
-Av = 7.19 dB  
+Av = 7.2 dB  
 
 ---
 
@@ -244,7 +246,7 @@ GBP = Av × BW
 | Parameter | Theoretical | Simulated |
 |------------|-------------|------------|
 | Gain (V/V) | 2.77 | 2.29 |
-| Gain (dB) | 8.84 dB | 7.19 dB |
+| Gain (dB) | 8.84 dB | 7.2 dB |
 | ID | 200 µA | 198.6 µA |
 | W | 1.07 µm | 1.58 µm |
 
