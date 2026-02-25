@@ -26,7 +26,13 @@ The Common Source amplifier consists of:
 - Source grounded  
 
 The source terminal is common to both input and output, hence the name Common Source amplifier.
-<img width="1139" height="812" alt="Screenshot 2026-02-24 115942" src="https://github.com/user-attachments/assets/9426d024-2ac5-4332-814b-28236b6fd3fd" />
+
+without capacitor
+<img width="1919" height="1000" alt="Screenshot 2026-02-25 181803" src="https://github.com/user-attachments/assets/ff37feac-4803-485e-876b-5324c6f76159" />
+with capacitor
+<img width="1919" height="1002" alt="Screenshot 2026-02-25 181605" src="https://github.com/user-attachments/assets/810ea96c-2cc2-40e2-95f8-f7f02b133b6e" />
+
+
 
 
 ---
@@ -197,7 +203,13 @@ vout
 
 AC analysis is performed to determine the frequency response of the Common Source amplifier. It shows how the gain varies with frequency and helps in identifying the lower and upper cutoff frequencies. From the AC plot, bandwidth and gain-bandwidth product can be calculated. This analysis verifies the amplifier’s performance over a range of operating frequencies.
 
+without capacitor
+
 <img width="1919" height="995" alt="Screenshot 2026-02-24 120927" src="https://github.com/user-attachments/assets/123174af-6feb-474e-ba01-2f644228950e" />
+
+with capacitor
+
+<img width="1919" height="996" alt="Screenshot 2026-02-25 182348" src="https://github.com/user-attachments/assets/c7fc9817-04a1-4839-9704-ccd9e16107dc" />
 
 
 
