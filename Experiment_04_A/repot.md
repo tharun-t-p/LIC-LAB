@@ -32,7 +32,10 @@ The circuit consists of:
 - A constant tail current source (ISS = 1 mA)  
 - Two load resistors (R1 and R2 = 1.8 kΩ)  
 - Symmetrical structure for equal current distribution
-  <img width="1256" height="858" alt="Screenshot 2026-03-27 192256" src="https://github.com/user-attachments/assets/a397364f-d58e-495d-9e70-17de42715ce5" />
+
+
+ <img width="993" height="923" alt="Screenshot 2026-03-28 211845" src="https://github.com/user-attachments/assets/e7028118-8b84-498b-bd94-c881e09647a6" />
+
 
 
 ---
@@ -41,7 +44,8 @@ The circuit consists of:
 
 ### Node Voltages
 
-<img width="847" height="631" alt="Screenshot 2026-03-27 192311" src="https://github.com/user-attachments/assets/165f2f6e-fba9-4c55-9c47-4fbab1144e60" />
+<img width="852" height="632" alt="Screenshot 2026-03-28 211949" src="https://github.com/user-attachments/assets/16387a6c-2ca4-46ba-acfe-a0dc13fb2cf3" />
+
 
 
 VDD = 0.9 V  
